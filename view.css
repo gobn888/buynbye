@@ -1,0 +1,63 @@
+<style> 
+head {
+    position: absolute;
+    top: 0;
+    left: 05px;
+}
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+#welcomeBanner {
+    background-color: #454545;
+    position: absolute;
+    color: white;
+    clear: both;
+    width: 1300px;
+    height: 30px;
+    padding: 20px;
+}
+#inputCtrl {
+    top: 72px;
+    position: absolute;
+    background-color: #BCBCBC;
+    padding: 20px;
+    width: 300px;
+    height: auto;
+    font-family: ‘Arial Narrow’, sans-serif;
+}
+#currencyCtrl {
+    top: 512px;
+    position: absolute;
+    background-color: #C9C9C9;
+    padding: 20px;
+    width: 300px;
+    height: auto;
+    text-align: left;
+    font-family: ‘Arial Narrow’, sans-serif;
+}
+#resultCtrl {
+    text-align: left;
+    position: relative;
+    left: 342px;
+    top: 72px;
+    background-color: #E7E7E7;
+    padding: 8px;
+    width: 980px;
+    height: auto;
+    min-height: 1000px;
+    font-family: Century Gothic, sans-serif;
+}
+#footer {
+    bottom: 0;
+    position: relative;
+    background-color: #454545;
+    color: white;
+    width: 1340px;
+    height: 110px;
+}
+#th,
+td {
+    padding: 15px;
+}
+</style>

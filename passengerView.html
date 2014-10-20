@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Buy N Bye at Airport</title>
+    <link rel="stylesheet" type="text/css" href="view.css">
+    <img src="banner.jpg" style="width:1300px; height:300px;" alt="Welcome to Buy and Bye">
+    </A>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="data.js"></script>
+    <script src="display.js"></script>
+</head>
+
+<body ng-app="BuyBye">
+    <div id="wrapper">
+        <div id='welcomeBanner' ng-controller="clockController">
+            <h4>Welcome to Buy N Bye. Time is {{ clock }} !</h4>
+        </div>
+        <div ng-controller="declareController">
+            <div id="inputCtrl">
+                <h4>To compare prices, enter a product name</h4>
+                <img src="product.png" style="height:30px; width:30px" alt="Product small icon">
+                <br>
+                <input ng-model="productname" type="text" placeholder="Enter product name">
+
+                <h4>To list products at a certain airport, select airport from the list </h4>
+                <img src="plane.png" style="height:30px; width:30px" alt="Airport small icon">
+                </br>
+                <select ng-model="airportname">
+                    <option value="">-- choose airport --</option>
+                    <option value="Oslo Gardemoen">Oslo Gardemoen, Norway</option>
+                    <option value="Beijing Capital International Airport">Beijing Capital International Airport, China</option>
+                    <option value="London Heathrow Airport">London Heathrow Airport, England</option>
+                    <option value="Kuala Lumpur International Airport">Kuala Lumpur International Airport</option>
+                    <option value="Madrid Barajas Airport">Madrid Barajas Airport, Spain</option>
+                </select>
+
+                <h4>To list products by category, select category from list </h4>
+                <img src="product.png" style="height:30px; width:30px" alt="Product small icon">
+                <br>
+                <select ng-model="categoryvalue">
+                    <option value="">-- choose category --</option>
+                    <option value="Perfume">Perfume</option>
+                    <option value="Fashion">Fashion</option>
+                </select>
+            </div>
+
+            <div id="currencyCtrl" ng-controller="currencyController">
+                <img src="currency.gif" style="display: block; margin: 0 auto;height:100px; width:100px; position:center" alt="Currency image">
+                <h2>Currency exchange converter </h2>
+                <p>To compare prices, enter the values in respective currency and result will be in USD as base value</p>
+                <input ng-model="pricevalue" value="0" type="text" placeholder=" Enter price value">
+                <select ng-model="currencyvalue" ng-options="opt as opt.label for opt in options" alt="select currency from list">
+                </select>
+                <button ng-disabled="!pricevalue" ng-click="clickconvert()" alt="convert currency button">Convert</button>
+                <h3>Result: It is equal to USD {{ convert | number : 2}}</h3>
+            </div>
+            <div id="resultCtrl" ng-controller="declareController">
+                <h3>Search results: </h3>
+                <ul>
+                    <li ng-repeat="product in product | filter:{name:productname, airportName: airportname, category:categoryvalue}">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="product/{{ product.id }}.jpg" alt="product picture">
+                                </td>
+                                <td>
+                                    <h2>Product name: {{ product.name }}</h2>
+                                    <p>Price: {{ product.currency}} {{ product.price }}</p>
+                                    <p>Current available stock: {{ product.stock }}</p>
+                                    <p>Description: {{ product.description }}</p>
+                                    <p>Shop: {{ product.shopname }} ( Operating hours: {{ product.operatinghour}} )</p>
+                                    <p>Location: {{ product.address }} , {{ product.airportName }}
+                                        <button ng-click="showmap(product.index)" class="button alert" alt="show map button">Show map</button>
+                                    </p>
+
+                                    <input class="button" type="image" src="cart.gif" name="add to cart" ng-click="buyitem(product.index)" alt="add to cart button">
+                                    <br/>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            <table>
+                <tr>
+                    <td>
+                        <img src="logo.jpg" style="display: block; margin: 0 auto; height:60%; width:65%; position:center" alt="Company logo">
+                    </td>
+                    <td>
+                        <h2>Buy N Bye</h2>
+                        <p>Shop what you want at cheaper prices while travel!</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<footer>
+
+</footer>
+</div>
+
+</html>
+
